@@ -1,0 +1,12 @@
+# 灵谱后端依赖 —— 由运行环境 lockdown 生成（conda env: piano_env / Python 3.10）
+# 安装：conda activate <env> && pip install -r requirements.txt
+
+basic-pitch==0.4.0
+librosa==0.10.2.post1
+music21==7.3.3
+numpy==2.2.5
+fastapi==0.115.0
+uvicorn==0.30.6
+python-multipart==0.0.12
+# basic-pitch 的 onnxruntime 推理依赖；实际环境中为 1.14.1
+onnxruntime>=1.14.1

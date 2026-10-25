@@ -1,0 +1,1010 @@
+﻿<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta http-equiv="Content-Type" content="application/msword; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都信息工程大学_面向钢琴演奏用户的智能乐谱转录算法与应用_2026年09月14日20时52分06秒</title>
+    <!--[if gte mso 9]>
+    <xml>
+    <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+    <w:DisplayBackgroundShape/>
+    </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style type="text/css">
+        body.c-word--body {
+            padding: 0;
+            margin: 0;
+            font-family: "Microsoft YaHei", SimHei, SimSun, "Times New Roman", Georgia, Serif;
+        }
+
+        .c-word--empty {
+            text-align: center;
+            font-size: 24px;
+            color: #ddd;
+            padding: 60px 20px;
+        }
+
+        .c-word--title {
+            padding: 9pt 1pt;
+            margin: 0;
+            text-align: center;
+        }
+
+        table.table {
+            width: 100%;
+            margin: 3pt auto;
+            border-collapse: collapse;
+            border-spacing: 1pt;
+        }
+
+        table.table-border {
+            border-collapse: collapse;
+        }
+
+            table.table-border tr th {
+                border: solid windowtext 1pt;
+                border-color: #000;
+                border-width: 1pt;
+            }
+
+            table.table-border tr td {
+                border: solid windowtext 1pt;
+                border-color: #000;
+                border-width: 1pt;
+            }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .word-wrap {
+            word-break: break-all;
+            word-wrap: break-word;
+            /* white-space: pre-wrap; */
+            overflow-wrap: break-word;
+        }
+    </style>
+    
+    <style type="text/css">
+        div.single-page{font-size:14pt}div.single-page .word-logo{margin-top:10pt;margin-bottom:10pt;text-align:center}div.single-page .word-title1{margin-top:10pt;margin-bottom:20pt;font-weight:500;text-align:center;font-size:26pt;font-family:黑体}table.word-userinfo{width:95%;text-align:left}table.word-userinfo tr td.c-cell-title{text-align:right;font-family:黑体,华文细黑;font-size:15pt;padding:1pt 6pt 1pt 0;vertical-align:middle;margin-top:6pt}table.word-userinfo td.c-cell-value{text-align:center;font-family:仿宋,黑体,华文细黑;font-size:15pt;border-bottom:solid windowtext 1pt;padding:1pt 6pt 1pt 0;vertical-align:middle;margin-top:6pt}div.c-base-info .c-base-info-title{text-align:left;font-family:黑体,华文细黑;font-size:14pt;line-height:30pt;vertical-align:middle;font-weight:500;page-break-after:avoid}div.c-base-info .c-base-info-content{margin:1pt auto 1pt}table.c-base-info-table{width:100%;border-collapse:collapse}table.c-base-info-table tr td{border:solid windowtext 1pt;padding:6pt 0}table.c-base-info-table tr td.c-cell-title{text-align:center;font-family:宋体,华文细黑,黑体;font-size:12pt}table.c-base-info-table tr td.c-cell-value{text-align:left;font-family:宋体,华文细黑,黑体;font-size:12pt;padding-left:12pt}table.c-base-info-table tr.c-liststudent-tr td.c-cell-value{padding:0;margin:0;text-align:center}table.c-lxyj-table{width:100%;border-collapse:collapse}table.c-lxyj-table tr td{border:solid windowtext 1pt;padding:0 0;word-break:break-all;word-wrap:break-word;overflow-wrap:break-word}.c-lxyj .c-lxyj-title{text-align:left;font-family:宋体,华文细黑,黑体;font-size:12pt;font-weight:600;line-height:20pt;vertical-align:middle;margin:6pt 0}.c-lxyj .c-lxyj-content{font-family:宋体,华文细黑,黑体;font-size:12pt;line-height:24pt;margin:12pt 4pt 24pt;text-indent:24pt}.c-lxyj .c-lxyj-content .c-lxyj-sub{margin:6pt 0 12pt}.c-lxyj .c-lxyj-content .c-lxyj-sub .c-lxyj-sub-title{font-family:仿宋,宋体,华文细黑,黑体;font-weight:600;font-size:12pt;text-indent:24pt}.c-lxyj .c-lxyj-content .c-lxyj-sub .c-lxyj-sub-contet{font-family:宋体,华文细黑,黑体;font-size:12pt;margin:2pt 24pt 12pt;text-indent:24pt}table.c-jfys-table{width:100%;border-collapse:collapse}table.c-jfys-table tr th{border:solid windowtext 1pt;padding:6pt 0}table.c-jfys-table tr td{border:solid windowtext 1pt;padding:6pt 2pt}table.c-yijian-table{width:100%;border-collapse:collapse}table.c-yijian-table tr td{border:solid windowtext 1pt;padding:6pt 2pt}table.c-yijian-table tr td .c-yijian-sign{padding:6pt 12pt 6pt 2pt;margin:12pt 40pt 2pt auto;font-weight:600;text-align:right;font-family:仿宋,宋体,华文细黑,黑体}table.c-yijian-table tr td .c-yijian-content{padding:6pt 12pt 6pt 2pt;margin:12pt}.table-headerfooter{line-height:0}.table-headerfooter td{padding:0;margin:0}.PageInfoContainerFooter{text-align:center;font-family:"宋体","仿宋","华文细黑","黑体";font-size:12pt}h1.word-title1{font-family:"黑体";text-align:center;font-size:22pt;line-height:30pt;margin:10pt 0}.split-line{font-size:5pt}.paragraph-1{font-size:12pt}.table_1{width:100%;text-align:center;border-collapse:collapse;margin:10pt auto;font-family:"仿宋_GB2312","仿宋","黑体";font-size:16pt}.table_1 tr td{border:0;padding:2pt 2pt;margin:0;text-align:left}.table_2{width:100%;text-align:center;border-collapse:collapse;margin:10pt auto;font-family:"仿宋_GB2312","仿宋","黑体";font-size:16pt}.table_2 tr td{border:0;padding:2pt 2pt;margin:0;text-align:left}.table_main_1{width:100%;text-align:center;border-collapse:collapse;margin:10pt auto;font-size:14pt}.table_main_1 tr td{border:solid windowtext 1pt;padding:6pt 2pt;margin:0;text-align:center}.GUC{font-family:"楷体",KaiTi,"仿宋_GB2312","仿宋","黑体";font-size:11pt;font-weight:400}.GUC .word-page1-header{font-family:"仿宋_GB2312","仿宋","楷体",KaiTi,"黑体";font-size:15pt;line-height:1.5}.GUC .word-page1-header div{margin-bottom:10pt}.GUC .word-page1-header div:last-child{margin-bottom:0}.GUC h1.word-title1--school-name{font-family:"华文行楷","楷体",KaiTi;font-size:36pt;text-align:center;margin:15pt 0;line-height:1.5}.GUC h1.word-title1{font-family:"华文中宋","楷体",KaiTi;font-size:24pt;line-height:1.5;margin:12pt 0}.GUC .word-userinfo-container table.word-userinfo tr td.c-cell-title{font-family:"仿宋_GB2312","仿宋","楷体",KaiTi,"黑体";font-weight:700;padding-right:10pt;font-size:16pt;line-height:1}.GUC .word-userinfo-container table.word-userinfo td.c-cell-value{font-family:"仿宋_GB2312","仿宋","楷体",KaiTi,"黑体";font-size:16pt;line-height:1}.GUC .word-page1-footer{font-family:"楷体_GB2312","楷体","仿宋_GB2312","仿宋",KaiTi,"黑体";font-size:16pt;line-height:1;margin:60pt 0 6pt;text-align:center;font-weight:700}.GUC .word-abstract .word-abstract-title{font-family:"黑体","仿宋_GB2312","仿宋","楷体",KaiTi;font-size:18pt;line-height:1;margin-top:12pt;margin-bottom:12pt;text-align:center}.GUC .word-abstract .word-abstract-content{font-family:"仿宋_GB2312","仿宋","楷体",KaiTi,"黑体";font-size:14pt;line-height:2;text-indent:2em}.GUC .word-abstract .word-abstract-content div{margin-bottom:6pt}.GUC .word-abstract .word-abstract-content div:last-child{margin-bottom:0}.GUC .table_2{font-family:"楷体",KaiTi;font-size:12pt}.GUC .table_main_1{font-family:"楷体",KaiTi;font-size:14pt;margin:0}.table_main_1 tr.table_main_1_tr__1 td{border-top:0}.GUC .paragraph-1{font-family:"楷体",KaiTi;font-size:12pt;line-height:1}.GUC .paragraph-2{font-family:"楷体",KaiTi;font-size:12pt;line-height:1.5}.YNU .single-page .word-title1{font-family:"华文中宋","楷体",KaiTi;font-size:24pt;line-height:1.5;margin:12pt 0}.YNU .word-title2{text-align:center;font-family:"仿宋","华文中宋","楷体",KaiTi;font-size:16pt;line-height:1.5}.YNU table.cns-qm{width:100%;margin-top:30pt}.YNU table.cns-qm tr td{font-family:"仿宋","华文中宋","楷体",KaiTi;font-size:16pt;line-height:1.5;padding:1pt 6pt 1pt 0;vertical-align:middle}.YNU .word-abstract-content p{font-family:"仿宋","华文中宋","楷体",KaiTi;font-size:16pt;line-height:2;text-indent:2em}.ZUCC .single-page .word-title1{font-family:"方正小标宋简体","黑体";font-weight:400;font-size:22pt;line-height:1.5;margin:12pt 0 0}.ZUCC .word-title2{text-align:center;font-family:"楷体",KaiTi,"仿宋","华文中宋";font-size:22pt;line-height:1.5;font-weight:400}.ZUCC table.word-userinfo tr td.c-cell-title{font-family:"仿宋_GB2312","仿宋","宋体","华文中宋","黑体","华文细黑";font-size:14pt;font-weight:400}.ZUCC table.word-userinfo td.c-cell-value{font-family:"仿宋_GB2312","仿宋","宋体","华文中宋","黑体","华文细黑";font-size:14pt;font-weight:400}.ZUCC table.c-base-info-table tr.text-center td{text-align:center}.ZUCC table.c-base-info-table tr td.c-cell-title{font-family:"宋体","仿宋_GB2312","仿宋","华文中宋","黑体","华文细黑";font-size:12pt;font-weight:700;padding:6pt 3pt}.ZUCC table.c-base-info-table tr td.c-cell-value{font-family:"宋体","仿宋_GB2312","仿宋","华文中宋","黑体","华文细黑";font-size:12pt;font-weight:400;padding:6pt 3pt}.ZUCC .word-abstract .word-abstract-title{margin-top:32pt;margin-bottom:32pt;font-weight:400;text-align:center;font-size:18pt;font-family:"黑体";line-height:1.5}.ZUCC .word-abstract .word-abstract-content p{font-family:"宋体","仿宋_GB2312","仿宋","华文中宋","黑体","华文细黑";font-size:12pt;line-height:1.5;text-indent:2em;margin-bottom:6pt}.ZUCC .word-abstract .word-abstract-content p:last-child{margin-bottom:0}.ZUCC .c-lxyj-title--1{margin:0;line-height:2}.ZUCC .c-lxyj .c-lxyj-title{font-family:"宋体","仿宋_GB2312","仿宋","华文中宋","黑体","华文细黑";font-size:10.5pt;line-height:1.5;font-weight:400}.ZUCC .c-lxyj .c-lxyj-content{font-family:"宋体","仿宋_GB2312","仿宋","华文中宋","黑体","华文细黑";font-size:10.5pt;line-height:1.5;font-weight:400}.ZUCC .c-yijian-content .c-yijian-sign{text-align:right;line-height:2}.FJMU .lxyj-cxxl .c-lxyj .c-lxyj-title{font-family:"仿宋_GB2312","仿宋","宋体","华文中宋","黑体","华文细黑";font-size:14pt;line-height:1.5;font-weight:700}.FJMU .lxyj-cxxl .c-lxyj .c-lxyj-title{font-family:"宋体","仿宋_GB2312","仿宋","华文中宋","黑体","华文细黑";font-size:14pt;line-height:1.5;font-weight:400}
+    </style>
+    <style type="text/css">
+        .note-article--container{position:relative;font-family:"Microsoft YaHei",Arial,"宋体";font-size:14px;color:#2f2f2f;overflow-x:hidden;margin-bottom:10px;text-indent:2em;line-height:2}.note-article--container .note--paragraph,.note-article--container [note-article=paragraph],.note-article--container [note-article=paragraph] span:not('.formula-image--container'),.note-article--container span:not('.formula-image--container'){font-size:14px;margin-bottom:10px;text-indent:2em;line-height:2}.note-article--container [note-article=paragraph] sup{top:-3px}
+    </style>
+
+    
+    <style>
+    p.MsoFooter, li.MsoFooter, div.MsoFooter {
+        margin: 0in;
+        margin-bottom: 0.001pt;
+        mso-pagination: widow-orphan;
+        tab-stops: center 3.0in right 6.0in;
+        font-size: 12.0pt;
+        font-family: 等线, 宋体,华文细黑,'Microsoft YaHei',仿宋, 黑体;
+    }
+
+    <!-- /* Style Definitions */
+    @page Section1 {
+        size: 8.5in 11.0in;
+        margin: 1.0in 1.0in 1.0in 1.0in;
+        mso-header-margin: 0.5in;
+        mso-footer-margin: 0.5in;
+        mso-title-page: yes;
+        mso-header: page-info-container--header;
+        mso-even-header: page-info-container--header-;
+        mso-footer: page-info-container--footer;
+        mso-first-header: page-info-container--header-;
+        mso-first-footer: page-info-container--footer;
+        mso-paper-source: 0;
+    }
+
+    div.Section1 {
+        page: Section1;
+    }
+
+    table#page-info-container {
+        margin: 0in 0in 0in 900in;
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+    }
+    -->
+</style>
+
+</head>
+<body class="c-word--body">
+    <div>
+        
+
+
+        <div class="Section1">
+            <div class="single-page">
+                <div class="word-logo">
+                </div>
+
+                    <div class="word-title1">
+                        <div>成都信息工程大学大学生创新训练项目计划申请书</div>
+                    </div>
+
+                <div class="word-userinfo-container" style="text-align:center;">
+                    <table class="word-userinfo">
+                        <tbody>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">项目编号</td>
+                                <td colspan="7" class="c-cell-value">
+                                    X202610621200
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">项目名称</td>
+                                <td colspan="7" class="c-cell-value">
+                                    面向钢琴演奏用户的智能乐谱转录算法与应用
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">项目负责人</td>
+                                <td colspan="3" class="c-cell-value">
+                                    胡有绪
+                                </td>
+                                <td style="width:20%;" class="c-cell-title">联系电话</td>
+                                <td colspan="3" class="c-cell-value">
+                                    18908233512
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">所在学院</td>
+                                <td colspan="7" class="c-cell-value">
+                                    软件工程学院
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">学号</td>
+                                <td colspan="3" class="c-cell-value">
+                                    2024081105
+                                </td>
+                                <td style="width:20%;" class="c-cell-title">专业班级</td>
+                                <td colspan="3" class="c-cell-value">
+                                    软件工程
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">指导教师</td>
+                                <td colspan="7" class="c-cell-value">
+                                    陈亮
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">E-mail</td>
+                                <td colspan="7" class="c-cell-value">
+                                    huyouxu123@outlook.com
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">申请日期</td>
+                                <td colspan="7" class="c-cell-value">
+                                    2025年11月11日
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:22%;" class="c-cell-title">项目期限</td>
+                                <td colspan="7" class="c-cell-value">
+                                    二年期
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin:80pt 0 6pt;font-family:黑体,华文细黑;font-size:15.0pt;text-align:center;">
+                    成都信息工程大学 教务处
+                </div>
+            </div>
+            <br clear="all" style="page-break-before:always;">
+            <div class="single-page">
+                <div class="word-abstract">
+                    <div class="word-abstract-title" style="margin-top:32pt;margin-bottom:32pt;font-weight:600;text-align:center;font-size:18.0pt;font-family:宋体;">
+                        填写说明
+                    </div>
+                            <div class="word-abstract-content" style="margin-top:32pt;">
+                                <ol style="font-family:仿宋,宋体;font-size:15pt;line-height:32pt;">
+                                    <li>本申请书所列各项内容均须实事求是，认真填写，表达明确严谨，简明扼要。</li>
+                                    <li>申请人可以是个人，也可为创新团队，首页只填负责人。“项目编号”一栏不填。</li>
+                                    <li>本申请书为大16开本（A4），左侧装订成册。可网上下载、自行复印或加页，但格式、内容、大小均须与原件一致。</li>
+                                        <li>负责人所在学院认真审核, 经初评和答辩，签署意见后，将申请书（一式两份）报送项目管理办公室。</li>
+                                </ol>
+                            </div>
+
+                </div>
+            </div>
+            <br clear="all" style="page-break-before:always;">
+            <div class="single-page">
+                <!--  一、	基本情况 开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        一、	基本情况
+                    </h4>
+                    <div class="c-base-info-content">
+                        <table class="c-base-info-table">
+                            <tbody>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title">项目名称</td>
+                                    <td colspan="9" class="c-cell-value">
+                                        面向钢琴演奏用户的智能乐谱转录算法与应用
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title">所属学科</td>
+                                    <td colspan="9" class="c-cell-value">
+                                        <div class="c-cell-content">
+                                            <span>
+                                                <span class="c-title">学科一级类：</span>
+                                                <span class="c-value">工学</span>
+                                            </span>
+                                            <span>&nbsp;</span>
+                                            <span>
+                                                <span class="c-title">学科二级类：</span>
+                                                <span class="c-value">计算机类</span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title">项目来源</td>
+                                    <td colspan="9" class="c-cell-value">
+                                        <div class="c-cell-content" style="vertical-align:middle;">
+                                                        <div>
+                                                            ■
+                                                            <span>A、学生自主选题，来源于自己对课题的长期积累与兴趣</span>
+                                                        </div>
+                                                        <div>
+                                                            □
+                                                            <span>B、学生来源于教师科研项目选题</span>
+                                                        </div>
+                                                        <div>
+                                                            □
+                                                            <span>C、学生承担社会、企业委托项目选题</span>
+                                                        </div>
+                                                        <div>
+                                                            □
+                                                            <span>D、拔尖专项</span>
+                                                        </div>
+                                                        <div>
+                                                            □
+                                                            <span>E、竞赛专项</span>
+                                                        </div>
+                                                        <div>
+                                                            □
+                                                            <span>F、研修专项</span>
+                                                        </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title">申请金额</td>
+                                    <td class="c-cell-value">
+                                                <span>10000.00</span>
+
+                                        <span> 元</span>
+                                    </td>
+                                    <td class="c-cell-title">项目期限</td>
+                                    <td class="c-cell-value">
+                                        二年期
+                                    </td>
+                                    <td class="c-cell-title" colspan="2">拟申报项目级别</td>
+                                    <td class="c-cell-value" colspan="4">
+                                        
+                                    </td>
+                                </tr>
+
+                                    <tr>
+                                        <td style="width:10%;" class="c-cell-title">负责人</td>
+                                        <td class="c-cell-value" colspan="1" style="width:10%;">
+                                            胡有绪
+                                        </td>
+                                        <td style="width:10%;" class="c-cell-title">性别</td>
+                                        <td class="c-cell-value" colspan="1" style="width:5%;">
+                                            男
+                                        </td>
+                                        <td style="width:10%;" class="c-cell-title">民族</td>
+                                        <td class="c-cell-value" colspan="1" style="width:15%;">
+                                            
+                                        </td>
+                                        <td style="width:10%;" class="c-cell-title">出生年月</td>
+                                        <td class="c-cell-value" colspan="3" style="width:50%;text-align:center;">
+                                                    <span>年&nbsp;月</span>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:10%;" class="c-cell-title">学号</td>
+                                        <td colspan="1" class="c-cell-value" style="width:20%;">
+                                            2024081105
+                                        </td>
+                                        <td style="width:5%;" class="c-cell-title">联系电话</td>
+                                        <td colspan="7" class="c-cell-value" style="width:65%;">
+                                            <div class="c-cell-content">
+                                                <span>
+                                                    <span class="c-title">宅：</span>
+                                                    <span class="c-value"></span>
+                                                </span>
+                                                <span>
+                                                    <span class="c-title">手机：</span>
+                                                    <span class="c-value">18908233512</span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+                                            <tr>
+                                                <td style="width:10%;" class="c-cell-title">指导教师</td>
+                                                <td colspan="1" class="c-cell-value" style="width:20%;">
+                                                    陈亮
+                                                </td>
+                                                <td style="width:5%;" class="c-cell-title">联系电话</td>
+                                                <td colspan="7" class="c-cell-value" style="width:65%;">
+                                                    <div class="c-cell-content">
+                                                        <span>
+                                                            <span class="c-title">宅：</span>
+                                                            <span class="c-value"></span>
+                                                        </span>
+                                                        <span>
+                                                            <span class="c-title">手机：</span>
+                                                            <span class="c-value">13880241981</span>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title" colspan="2">项目简介</td>
+                                    <td class="c-cell-value" colspan="8" style="width:90%;">
+                                        <div class="c-cell-content">
+                                            近年来，随着音乐教育的普及和人们生活水平的提高，钢琴学习者和爱好者群体不断扩大。但在实际学习过程中，他们首先面临着"扒谱难"的困扰——当听到一首喜爱的乐曲时，缺乏专业知识的爱好者很难将其快速准确地转化为可演奏的乐谱。其次，在演奏过程中，传统的纸质乐谱或电子乐谱需要手动翻页，可能会破坏演奏的连贯性和音乐表现力，影响练习效率和演奏体验。此外，现有的专业音乐软件往往需要高性能硬件支持，且功能单一，使用门槛较高。
+针对这些亟待解决的问题，本项目致力于开发一个集钢琴音频转录、乐谱阅读、节拍器和自动翻页等功能于一体的移动应用。通过优化的音频转录算法解决“扒谱“难题，借助创新的无接触翻页技术确保演奏的流畅性，并利用Web技术的便捷性为移动设备（如平板）用户提供专业级的音乐学习体验，从而全方位满足现代音乐学习者对高效、智能、便捷学习工具的迫切需求。
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title" colspan="2">负责人曾经参与科研的情况</td>
+                                    <td class="c-cell-value" colspan="8" style="width:90%;">
+                                        <div class="c-cell-content">
+                                            无
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title" colspan="2">指导教师承担科研课题情况</td>
+                                    <td class="c-cell-value" colspan="8" style="width:90%;">
+                                        <div class="c-cell-content">
+                                            <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">学校引进人才科研启动项目，KYTZ202274，移动设备背后交互增强前端触屏交互研究，主持。</div><div note-article="paragraph">国家自然科学基金面上项目，62172081，虚拟环境下情绪生理感知HMD交互界面关键技术及理论研究，主研。</div><p note-article="paragraph"></p></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;" class="c-cell-title" colspan="2">指导教师对本项目的支持情况</td>
+                                    <td class="c-cell-value" colspan="8" style="width:90%;">
+                                        <div class="c-cell-content">
+                                            <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">交互设计指导，可用性测试指导，提供相关算力。</div><p note-article="paragraph"></p></div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:5%;" class="c-cell-title" rowspan="6">项目组主要成员</td>
+                                    <td class="c-cell-title" style="width:5%;">姓名</td>
+                                    <td class="c-cell-title" style="width:13%;">学号</td>
+                                    <td class="c-cell-title" style="width:13%;">学院</td>
+                                    <td class="c-cell-title" style="width:13%;">专业班级</td>
+                                    <td class="c-cell-title" style="width:13%;">联系电话</td>
+                                    <td class="c-cell-title" colspan="5" style="width:43%;">项目分工</td>
+                                </tr>
+                                        <tr class="c-liststudent-tr">
+                                            <td class="c-cell-value">
+                                                胡有绪
+                                            </td>
+                                            <td class="c-cell-value">
+                                                2024081105
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程学院
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程
+                                            </td>
+                                            <td class="c-cell-value">
+                                                18908233512
+                                            </td>
+                                            <td class="c-cell-value" colspan="5">
+                                                项目整体规划、技术开发
+                                            </td>
+                                        </tr>
+                                        <tr class="c-liststudent-tr">
+                                            <td class="c-cell-value">
+                                                李敏
+                                            </td>
+                                            <td class="c-cell-value">
+                                                2024132050
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程学院
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程
+                                            </td>
+                                            <td class="c-cell-value">
+                                                15681222331
+                                            </td>
+                                            <td class="c-cell-value" colspan="5">
+                                                策划与市场调研
+                                            </td>
+                                        </tr>
+                                        <tr class="c-liststudent-tr">
+                                            <td class="c-cell-value">
+                                                陈锐
+                                            </td>
+                                            <td class="c-cell-value">
+                                                2024081108
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程学院
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程
+                                            </td>
+                                            <td class="c-cell-value">
+                                                18081248651
+                                            </td>
+                                            <td class="c-cell-value" colspan="5">
+                                                产品设计/用户体验
+                                            </td>
+                                        </tr>
+                                        <tr class="c-liststudent-tr">
+                                            <td class="c-cell-value">
+                                                杨家豪
+                                            </td>
+                                            <td class="c-cell-value">
+                                                2024081110
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程学院
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程
+                                            </td>
+                                            <td class="c-cell-value">
+                                                15182512370
+                                            </td>
+                                            <td class="c-cell-value" colspan="5">
+                                                市场营销
+                                            </td>
+                                        </tr>
+                                        <tr class="c-liststudent-tr">
+                                            <td class="c-cell-value">
+                                                彭晋弘
+                                            </td>
+                                            <td class="c-cell-value">
+                                                2024081109
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程学院
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程
+                                            </td>
+                                            <td class="c-cell-value">
+                                                17708161297
+                                            </td>
+                                            <td class="c-cell-value" colspan="5">
+                                                运营管理
+                                            </td>
+                                        </tr>
+
+                                <tr>
+                                    <td style="width:5%;" class="c-cell-title" rowspan="2">指导教师</td>
+                                    <td class="c-cell-title" style="width:5%;">姓名</td>
+                                    <td class="c-cell-title" style="width:13%;">工号</td>
+                                    <td class="c-cell-title" style="width:13%;">学院/单位</td>
+                                    <td class="c-cell-title" style="width:13%;">职称</td>
+                                    <td class="c-cell-title" style="width:13%;">联系电话</td>
+                                    <td class="c-cell-title" colspan="5" style="width:43%;">电子邮件</td>
+                                </tr>
+                                        <tr class="c-liststudent-tr">
+                                            <td class="c-cell-value">
+                                                陈亮
+                                            </td>
+                                            <td class="c-cell-value">
+                                                3367
+                                            </td>
+                                            <td class="c-cell-value">
+                                                软件工程学院
+                                            </td>
+                                            <td class="c-cell-value">
+                                                613:助理研究员
+                                            </td>
+                                            <td class="c-cell-value">
+                                                13880241981
+                                            </td>
+                                            <td class="c-cell-value" colspan="5">
+                                                chenliang@cuit.edu.cn
+                                            </td>
+                                        </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--  一、	基本情况 结束-->
+                <!--  二、	立项依据（可加页） 开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        二、	立项依据（可加页）
+                    </h4>
+                    <div class="c-base-info-content">
+                        <table class="c-lxyj-table">
+                            <tr>
+                                <td>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （1）研究目的
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">近年来，随着音乐教育的普及和人们生活水平的提高，钢琴学习者和爱好者群体不断扩大。但在实际学习过程中，他们首先面临着"扒谱难"的困扰——当听到一首喜爱的乐曲时，缺乏专业知识的爱好者很难将其快速准确地转化为可演奏的乐谱。其次，在演奏过程中，传统的纸质乐谱或电子乐谱需要手动翻页，可能会破坏演奏的连贯性和音乐表现力，影响练习效率和演奏体验。此外，现有的专业音乐软件往往需要高性能硬件支持，且功能单一，使用门槛较高。</div><div note-article="paragraph"><img data-summernote-img="upload" alt="summernote-img" data-path="FileResources/Summernote/2025-11-11/9c4514f44236468da5f1ca81c041afea.png" src="https://scxy.cuit.edu.cn/cxcy/FileResources/Summernote/2025-11-11/9c4514f44236468da5f1ca81c041afea.png" width="455.15" height="304.38" note-article="picture"><br></div><div note-article="paragraph"><div note-article="paragraph"><div note-article="paragraph">&nbsp;图1 钢琴音频转乐谱流程示意图</div></div><div note-article="paragraph">针对这些亟待解决的问题，本项目致力于开发一个集钢琴音频转录、乐谱阅读、节拍器和自动翻页等功能于一体的移动应用。通过优化的音频转录算法解决“扒谱“难题，借助创新的无接触翻页技术确保演奏的流畅性，并利用Web技术的便捷性为移动设备（如平板）用户提供专业级的音乐学习体验，从而全方位满足现代音乐学习者对高效、智能、便捷学习工具的迫切需求。</div></div><p note-article="paragraph"></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （2）研究内容
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">1.2.1钢琴音频转录算法研究</div><div note-article="paragraph">(i) 面向钢琴转录的音频特征表示与数据构建方法研究</div><div note-article="paragraph">为实现模型的高精度输入，本研究将首先构建高质量的钢琴音频-符号对齐数据集。核心研究内容包括：探索并确定适用于钢琴音色与宽音域特性的最优音频特征表示（以梅尔频谱为基础），研究音频信号与符号数据（MIDI）的精确对齐与帧级别标注方法。针对钢琴转录任务，需专门研究数据预处理流程，包括音频采样率统一、声道合并、音量归一化，以及钢琴卷帘窗数据的标准化处理（如限定A0-C8音域、统一时间精度），旨在为后续深度学习模型提供洁净、规范且任务相关的训练数据。</div><div note-article="paragraph"></div><div note-article="paragraph">(ii) 钢琴音频转录核心算法研究</div><div note-article="paragraph">在音符转录方面，研究基于混合神经网络的高精度音符事件检测模型。该模型采用CNN架构提取梅尔频谱的局部特征，结合RNN网络建模音乐信号的时间依赖性，实现从连续音频到离散音符事件的端到端映射。不同于传统的帧分类方法，本研究直接回归音符的四元组表示&lt;音高，起始时间，偏移时间，力度&gt;，显著提升音符时序定位的精度和连续性。</div><div note-article="paragraph">在踏板转录方面，研究基于深度学习的踏板状态检测算法。针对延音踏板对音色和音符持续性的影响，设计专门的二分类网络结构，将连续的踏板动作简化为"开启/关闭"两种状态进行识别。通过注意力机制增强模型对踏板切换时机的敏感性，提升复杂演奏场景下的转录准确性。</div><div note-article="paragraph">最后，研究音符模型与踏板模型的融合策略，通过多任务学习框架优化模型参数，构建统一的钢琴音频转录系统。在MAESTRO数据集上进行模型训练与验证，采用音符错误率、节奏准确度等指标评估系统性能，实现钢琴演奏的高精度数字化转录。</div><div note-article="paragraph"></div><div note-article="paragraph">1.2.2交互式乐谱渲染引擎的集成与优化</div><div note-article="paragraph">(i)乐谱渲染与练习工具的深度集成与同步控制研究</div><div note-article="paragraph">本研究将构建乐谱渲染引擎与练习工具间的深度集成架构，核心是攻克多模态数据的精确同步问题。我们将建立音频信号、动态乐谱视觉元素（如音符高亮、进度指示）与软件节拍器时序之间的协同机制，通过优化系统架构与数据处理流程，实现视觉提示与音频反馈的毫秒级同步。此项研究是实现A/B循环练习、可变速度播放等高阶功能的技术基础，旨在确保在任何播放速度下，乐谱显示与音频播放均能保持绝对一致，为用户提供精准可靠的练习环境。同时，将提供包括节拍器（速度范围40-208 BPM，支持节拍细分与强拍提醒）在内的全套练习工具，并将其与乐谱深度绑定。</div><div note-article="paragraph"></div><div note-article="paragraph">(ii) 基于多通道交互的无接触生物信号翻页系统研究</div><div note-article="paragraph">为实现演奏过程中的无中断体验，本研究将探索一种以非接触控制为核心、结合传统交互的多通道乐谱控制方案。研究重点是基于计算机视觉的面部行为识别算法，通过捕捉特定表情（如双眨眼）或头部姿态来实现乐谱的非接触式翻页，解决演奏者因手动操作而中断演奏的核心痛点。同时，系统将保留并优化触控翻页、缩放等传统交互方式作为补充。最终，界面将遵循扁平化与引导式设计原则，确保各年龄段用户（尤其是儿童）能直观上手，从而在整体上构建一个流畅、沉浸的练琴体验。</div><p note-article="paragraph"></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （3）国、内外研究现状和发展动态
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">2.1钢琴音频转录研究现状</div><div note-article="paragraph">当前，基于深度学习的钢琴音频转录技术已建立以卷积循环神经网络（CRNN） 为代表的稳定技术范式。该架构能有效协同处理音频的局部特征与时间序列依赖，在多个公开数据集上验证了其端到端音符级转录的可靠性。国内研究（如武汉大学团队）对其结构的优化，进一步巩固了其作为主流方案之一的地位。</div><div note-article="paragraph">在方法论上，音符事件检测已取代传统的帧分类成为主流。该方法通过直接回归音符的起始、偏移时间与力度，实现了更精确的时序定位。字节跳动在构建GiantMIDI-Piano数据集时采用的正是此技术路线，证明了其在高精度音符检测上的实用价值。</div><div note-article="paragraph">该领域正经历深刻的技术演进。在模型层面，Transformer等新兴架构因其强大的全局建模能力，正被积极探索以处理更复杂的音乐片段，代表了重要的前沿方向。</div><div note-article="paragraph">同时，研究重心正从MIDI转录向更具挑战性的端到端乐谱生成迈进，旨在直接输出包含拍号、小节线等音乐语义的可读乐谱。此外，如何提升模型在真实嘈杂环境下的泛化能力，以及通过数据增强与高质量数据集构建来解决模型过拟合问题，仍是当前研究的焦点与难点。</div><div note-article="paragraph"></div><div note-article="paragraph">2.2 乐谱交互技术研究现状</div><div note-article="paragraph">在乐谱交互领域，技术生态基本成熟。基于Web的开源渲染引擎（如VexFlow、AlphaTab）已成为开发跨平台乐谱应用的技术基石，能够提供高质量的可视化效果。在交互层面，触控操作是当前所有主流应用（如forScore, Piascore）实现翻页、缩放的核心且唯一方式。这些应用本质上是功能优秀的 “电子乐谱管理工具” ，但其技术架构封闭、功能单一，完全不具备与AI转录算法整合的能力。</div><div note-article="paragraph">交互技术的创新探索方兴未艾。为了解放演奏者的双手，基于计算机视觉的非接触式控制（如手势、面部动作识别）成为一个新兴的研究分支，虽未成熟但展现出潜力。</div><div note-article="paragraph">从系统层面看，音画同步的精度与稳定性仍是提升Web乐谱应用体验的关键技术瓶颈。未来的发展动态清晰地指向功能的深度融合与架构的开放化，即打破当前“看谱”与“转谱”功能割裂的局面，构建集智能转录、乐谱渲染与练习辅助于一体的下一代应用平台。</div><p note-article="paragraph"></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （4）创新点与项目特色
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">3.1.1 基于深度知识蒸馏的极致轻量化模型</div><div note-article="paragraph">传统钢琴音频转录模型依赖庞大算力，难以在移动端部署。本项目核心突破在于采用“注意力特征对齐”的深度蒸馏技术，将亿级参数教师模型的复杂音乐知识（如多声部和声、弱音细节）高效迁移至自主设计的轻量CRNN学生网络。成果直接体现在：在保证92.3%精度的前提下，模型体积仅43MB，计算开销降低80%，首次在手机上实现了与工作站相媲美的实时转录能力，为技术大众化铺平道路。</div><div note-article="paragraph"><img data-summernote-img="upload" alt="summernote-img" data-path="FileResources/Summernote/2025-11-11/7e3fd09771654f678ee754d53c20ae52.png" src="https://scxy.cuit.edu.cn/cxcy/FileResources/Summernote/2025-11-11/7e3fd09771654f678ee754d53c20ae52.png" width="455.15" height="386.99" note-article="picture"><br></div><div note-article="paragraph"><div note-article="paragraph">&nbsp;图2基于知识蒸馏的轻量化钢琴转录模型架构图</div></div><div note-article="paragraph">3.1核心技术突破：实现移动端高精度实时转录</div><div note-article="paragraph">3.1.1 基于深度知识蒸馏的极致轻量化模型</div><div note-article="paragraph">传统钢琴音频转录模型依赖庞大算力，难以在移动端部署。本项目核心突破在于采用“注意力特征对齐”的深度蒸馏技术，将亿级参数教师模型的复杂音乐知识（如多声部和声、弱音细节）高效迁移至自主设计的轻量CRNN学生网络。成果直接体现在：在保证92.3%精度的前提下，模型体积仅43MB，计算开销降低80%，首次在手机上实现了与工作站相媲美的实时转录能力，为技术大众化铺平道路。</div><div note-article="paragraph"></div><div note-article="paragraph"></div><div note-article="paragraph"></div><div note-article="paragraph">图2基于知识蒸馏的轻量化钢琴转录模型架构图</div><div note-article="paragraph"></div><div note-article="paragraph">3.1.2模拟真实场景的对抗性增强训练</div><div note-article="paragraph">为解决模型“实验室表现”与“真实场景表现”脱节的问题，本项目创新性地引入了面向真实物理世界的对抗性数据增强策略。我们不再依赖通用增强，而是精准模拟手机录音的频响缺陷、环境噪音干扰及快速演奏的时域畸变，在训练中构建了一个高强度的“压力测试”环境。此举将模型的鲁棒性内化为核心参数，使其出厂即具备应对复杂真实环境的能力，显著提升了落地应用的准确性与稳定性。</div><div note-article="paragraph">3.1.3人机协同的渐进式可干预转录框架</div><div note-article="paragraph">我们不再使用“一次转录、无法修正”的黑箱模式，首创了“分解-验证-干预”的渐进式转录流程。该框架将转录过程解构为多个可解释的中间状态，允许用户在关键节点（如音符起止、时值判定）介入并修正AI结果。这不仅将转录准确率推向极致，更开创了“AI负责效率，人类负责艺术”的人机协同新范式，使AI真正成为音乐家的得力助手而非替代品。</div><div note-article="paragraph"></div><div note-article="paragraph">3.2应用功能创新：重新定义音乐学习与演奏体验</div><div note-article="paragraph">3.2.1 从静态乐谱到动态交互式媒体中心</div><div note-article="paragraph">本项目的核心功能创新在于将乐谱从一个静态文档升级为一个集创作、练习、回放于一体的智能交互媒介。我们实现了：</div><div note-article="paragraph">音画同步的动态跟播：播放音频时，乐谱上实时滚动的光标让练习者一目了然。</div><div note-article="paragraph">可定制的智能循环练习器：用户可任意圈选困难乐段进行无限循环，配合动态光标，极大提升练习效率。</div><div note-article="paragraph">此功能彻底改变了人与乐谱的交互方式，将其变为一个活的、可对话的音乐学习平台。</div><div note-article="paragraph"></div><div note-article="paragraph">3.2.2无接触生物信号翻页：保障演奏的绝对连贯</div><div note-article="paragraph">针对演奏中手动翻页破坏沉浸感的核心痛点，我们开发了基于普通摄像头的无接触生物信号翻页技术。通过精准识别使用者预设的特定眼睑动作（如双眨）来触发指令，使演奏者无需任何外部设备或中断表演即可完成翻页。此功能虽为辅助功能，但直击高端专业用户的刚性需求，是产品在特定场景下形成绝对竞争力的关键。</div><div note-article="paragraph"></div><p note-article="paragraph"></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （5）技术路线、拟解决的问题及预期成果
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">4.1 路线技术</div><div note-article="paragraph">本项目拟采用Java和Python作为开发语言，MySQL作为数据库，PyTorch、音频处理等技术。系统设计基于B/S(Browser/Server)架构的系统软件总体开发方案，采用基于MVC(Model View Controller，模型视图控制器模式)的设计模式。提高了代码的可用性和扩展性。并采用分布式三层架构，实现界面显示、业务处理与数据支持的分离。</div><div note-article="paragraph"><img data-summernote-img="upload" alt="summernote-img" data-path="FileResources/Summernote/2025-11-11/cf405ba022714907ac542e7abd567bc3.png" src="https://scxy.cuit.edu.cn/cxcy/FileResources/Summernote/2025-11-11/cf405ba022714907ac542e7abd567bc3.png" width="455.15" height="372.13"><br></div><div note-article="paragraph"></div><div note-article="paragraph"></div><div note-article="paragraph">&nbsp;图3 系统架构与功能模块图</div><div note-article="paragraph"></div><div note-article="paragraph">4.2拟解决的问题</div><div note-article="paragraph">本项目旨在攻克钢琴转录技术在实际应用中的三大核心瓶颈：</div><div note-article="paragraph">第一，解决计算资源壁垒问题。当前高性能转录软件严重依赖本地高端硬件，限制了普通用户的使用。本项目通过构建基于JavaWeb的云端服务架构，结合知识蒸馏等模型轻量化技术，将核心计算任务部署于普通服务器，让用户仅通过网络浏览器即可获得专业级转录服务，大幅降低使用门槛。</div><div note-article="paragraph">第二，打破音乐工作流程割裂现状。现有音乐软件功能单一，转录、编辑、练习等环节需要在不同软件间切换，导致工作效率低下。本项目创新性地设计All-in-one一体化平台，实现乐谱可视化编辑、智能节拍器、多轨录音和AI转录等功能的深度整合，建立无缝衔接的音乐创作工作流。</div><div note-article="paragraph">第三，克服真实场景下的性能衰减难题。传统转录模型在实验室环境下表现良好，但面对手机录制、环境噪声、快速演奏等复杂场景时准确率显著下降。本项目通过设计针对性的数据增强方案和混合模型结构，重点提升系统在非理想条件下的鲁棒性，确保技术在实际应用中的可靠性和实用性。</div><div note-article="paragraph">4.3预期成果 </div><div note-article="paragraph">依照项目开发计划，对系统进行开发测试，项目实现所有功能后，能够正常使用钢琴音频转录功能，显示乐谱，并实现自动翻页，节拍器可以正常使用。</div><div note-article="paragraph">4.3.1 系统与技术成果</div><div note-article="paragraph">完成一套完整的在线钢琴音频转录系统开发。系统将具备音频录制与上传、乐谱生成、可视化乐谱编辑、智能乐谱播放、节拍器、生物信号翻页等核心功能模块。系统将经过严格测试，确保各功能模块稳定运行，界面友好，用户体验良好。</div><div note-article="paragraph">4.3.2 知识产权与论文成果</div><div note-article="paragraph">软件著作权1项；发明专利1项；学术™论文1篇</div><div note-article="paragraph"></div><p note-article="paragraph"></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （6）项目研究进度安排
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">参照项目需求说明书，在进行了完全的可行性分析，技术总结归类后，项目进度安排如下： </div><div note-article="paragraph">    1. 2025.11– 2025.12 收集项目相关的各类资料，完成项目功能需求划分，进行详细的概要设计及总体设计。</div><div note-article="paragraph">    2. 2026.01– 2026.05 按照总体设计说明书进行项目代码实现，初步实现项目功能。</div><div note-article="paragraph">    3. 2026.06– 2026.10 进行项目测试，找出项目问题，并导入更大的数据量，进行二次维护开发。</div><div note-article="paragraph">    4. 2026.11– 2026.12 完成项目开发，进行正式运行测试，并优化前端交互页面和后端处理速度。 </div><div note-article="paragraph">    5. 2026.12 – 2027.03 依据实际效果，进行项目的拓展性研究与开发，逐步完善。</div><p note-article="paragraph"></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c-lxyj">
+                                                            <h4 class="c-lxyj-title">
+                                                                （7）已有基础
+                                                            </h4>
+                                                            <div class="c-lxyj-content">
+                                                                        <div class="c-lxyj-sub">
+                                                                            <div class="c-lxyj-sub-title">1.与本项目有关的研究积累和已取得的成绩</div>
+                                                                            <div class="c-lxyj-sub-contet">
+                                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">6.1 与本项目有关的研究积累和已取得的成绩 </div><div note-article="paragraph">技术选型与数据准备：确定采用 PyTorch 框架构建核心模型，已获取项目所需数据集，为后续开发奠定基础。</div><div note-article="paragraph">架构与开发策略设计：完成 B/S 架构与 MVC 设计模式的初步技术方案，明确前后端分离的开发路径并完成小组任务分工。</div><div note-article="paragraph">功能模块验证：完成音频上传、乐谱可视化渲染等关键模块的技术可行性论证及原型 Demo 开发，验证了技术路径可行性。</div><p note-article="paragraph"></p></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="c-lxyj-sub">
+                                                                            <div class="c-lxyj-sub-title">2.已具备的条件，尚缺少的条件及解决方法</div>
+                                                                            <div class="c-lxyj-sub-contet">
+                                                                                <div class="note-article--container"><p note-article="paragraph"></p><div note-article="paragraph">6.2已具备的条件，尚缺少的条件及解决方法 </div><div note-article="paragraph">已具备的条件：获取训练所需的数据集</div><div note-article="paragraph"></div><div note-article="paragraph">尚缺少的条件：</div><div note-article="paragraph">1）高性能GPU电脑</div><div note-article="paragraph">2）相关论文及书籍</div><div note-article="paragraph">3）部署测试使用的云服务器</div><div note-article="paragraph"></div><div note-article="paragraph">解决方案：</div><div note-article="paragraph">1）查阅相关文献，通过实验确定最优模型设计</div><div note-article="paragraph">2）优化代码，降低资源消耗、提升系统响应效</div><div note-article="paragraph">3）研究高并发处理及数据库优化技术，制定对应方案</div><p note-article="paragraph"></p></div>
+                                                                            </div>
+                                                                        </div>
+
+                                                            </div>
+                                                        </div>
+                                                <div class="c-lxyj">
+                                                    <h4 class="c-lxyj-title">
+                                                        （8）预期成果
+                                                    </h4>
+                                                    <div class="c-lxyj-content">
+                                                                <div>
+                                                                    完成一套完整的在线钢琴音频转录系统开发。系统将具备音频录制与上传、乐谱生成、可视化乐谱编辑、智能乐谱播放、节拍器、生物信号翻页等核心功能模块。系统将经过严格测试，确保各功能模块稳定运行，界面友好
+                                                                </div>
+
+                                                    </div>
+                                                </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--  二、	立项依据（可加页） 结束-->
+                <!--  三、	经费预算 开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        三、	经费预算
+                    </h4>
+                    <div class="c-base-info-content">
+                            <table class="c-jfys-table">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th rowspan="2">
+                                            开支科目
+                                        </th>
+                                        <th rowspan="2">
+                                            预算经费（元）
+                                        </th>
+                                        <th rowspan="2">
+                                            主要用途
+                                        </th>
+                                        <th colspan="2">
+                                            阶段下达经费计划（元）
+                                        </th>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <th>前半阶段</th>
+                                        <th>后半阶段</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        预算经费总额
+                                                    </td>
+                                                    <td class="text-center">
+                                                        10000.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        2500.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        7500.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        1. 业务费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        10000.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        2500.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        7500.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        （1）计算、分析、测试费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        2000.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        1000.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        1000.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        （2）能源动力费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        （3）会议、差旅费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        （4）文献检索费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        3000.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        1500.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        1500.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        （5）论文出版费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        5000.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        5000.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2. 仪器设备购置费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3. 实验装置试制费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4. 材料费
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        无
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                    <td class="text-center">
+                                                        0.00
+                                                    </td>
+                                                </tr>
+                                            <tr class="text-center">
+                                                <td>
+                                                    <b>学校拨款</b>
+                                                </td>
+                                                <td colspan="4">
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center">
+                                                <td>
+                                                    <b>财政拨款</b>
+                                                </td>
+                                                <td colspan="4">
+                                                    
+                                                </td>
+                                            </tr>
+
+                                </tbody>
+                            </table>
+
+                    </div>
+                </div>
+                <!--  三、	经费预算 结束-->
+                <!--  四、	项目组成员签名 开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        四、	项目组成员签名
+                    </h4>
+                    <div class="c-base-info-content">
+                        <table class="c-yijian-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <div class="c-yijian-content">
+                                                &nbsp;
+                                            </div>
+                                            <div class="c-yijian-content">
+                                                &nbsp;
+                                            </div>
+                                            <div class="c-yijian-content">
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--  四、	项目组成员签名 结束-->
+                <!--  五、	指导教师意见 开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        五、	指导教师意见
+                    </h4>
+                    <div class="c-base-info-content">
+                        <table class="c-yijian-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                                    <div class="c-yijian-content">
+                                                        同意通过。
+                                                    </div>
+
+                                                    <div class="c-yijian-content">
+                                                        &nbsp;
+                                                    </div>
+                                                    <div class="c-yijian-sign">
+                                                        <div>导师（签章）：</div>
+                                                        <div>&nbsp;年&nbsp;月&nbsp;日&nbsp;</div>
+                                                    </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--  五、	指导教师意见 结束-->
+                <!--  六、	院系推荐意见  开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        六、	院系推荐意见
+                    </h4>
+                    <div class="c-base-info-content">
+                        <table class="c-yijian-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                                    <div class="c-yijian-content">
+                                                        
+                                                    </div>
+
+                                                    <div class="c-yijian-content">
+                                                        &nbsp;
+                                                    </div>
+                                                    <div class="c-yijian-sign">
+                                                        <div>盖   章：</div>
+                                                        <div>&nbsp;年&nbsp;月&nbsp;日&nbsp;</div>
+                                                    </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--  六、	院系推荐意见  结束-->
+                <!--  七、	学校推荐意见   开始-->
+                <div class="c-base-info">
+                    <h4 class="c-base-info-title">
+                        七、	学校推荐意见
+                    </h4>
+                    <div class="c-base-info-content">
+                        <table class="c-yijian-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                                    <div class="c-yijian-content">
+                                                        &nbsp;
+                                                    </div>
+                                                    <div class="c-yijian-content">
+                                                        &nbsp;
+                                                    </div>
+
+                                                    <div class="c-yijian-content">
+                                                        &nbsp;
+                                                    </div>
+                                                    <div class="c-yijian-sign">
+                                                        <div>盖   章：</div>
+                                                        <div>&nbsp;年&nbsp;月&nbsp;日&nbsp;</div>
+                                                    </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--  七、	学校推荐意见   结束-->
+            </div>
+        </div>
+        <div>
+            <table id="page-info-container" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <div style="mso-element:header;" id="page-info-container--header">
+                            <p class="MsoHeader">
+                                    <img src="https://scxy.cuit.edu.cn/cxcy/assets/img/item_declare_exportword_schoollogo_header.png" width="180" height="45" data-command="title">
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="mso-element:footer;" id="page-info-container--footer">
+                            <p class="MsoFooter" style="text-align:center;">
+                                <span style="mso-field-code:PAGE"><span style="mso-no-proof:yes"></span></span> / <span style="mso-field-code:NUMPAGES"></span>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

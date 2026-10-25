@@ -1,0 +1,344 @@
+# 面向钢琴演奏用户的智能乐谱转录应用 — 软件设计文档（Demo 版）
+
+> 校级立项项目：**面向钢琴演奏用户的智能乐谱转录算法与应用**
+> 阶段：可演示 Demo（一期）
+> 编制说明：本文档面向"先把完整产品体验跑通"的一期目标。凡涉及复杂算法 / 交互的接口，一期一律复用成熟开源能力，预留抽象层，二期再在具体位置替换优化。
+
+---
+
+## 0. 版本与决策记录
+
+| 决策项 | 一期采用方案 | 说明 |
+|---|---|---|
+| 整体形态 | 轻量后端 + 前端（前后端分离） | 保留简单后端承载"转谱"，更贴近立项书 B/S 形态，又不过度工程化 |
+| 转录（扒谱） | **piano_transcription_inference（已在 piano_env 装好）** | 阶段 0 冒烟已验证：CPU 模式对真实钢琴音频能识别出 85 音符 + 7 踏板；checkpoint 权重 171MB 已拉取；ffmpeg 已解压到 backend/ 用于 mp3 解码 |
+| 一期功能模块 | 乐谱渲染 + 音画同步跟播 + 节拍器 | 其余（A/B 循环、无接触翻页、可视化编辑等）二期待续迭代 |
+| 前端框架 | Vue 3 + Vite | 组件化、生态成熟、利于响应式，团队易上手 |
+| 后端框架 | Python FastAPI | 转录（piano_transcription_inference）为 Python 生态，前后端语言天然对齐 |
+| 音频获取 | 仅上传音频文件 | 不做浏览器实时录音，降低演示风险 |
+| 播放/跟播源 | alphaTab 内置音源（alphaSynth）驱动光标 | 同步精准、演示稳定，规避"同步原始音频"的复杂实现 |
+| 目标平台 | 响应式（桌面 + 平板浏览器） | 自适应适配 |
+
+---
+
+## 1. 项目概述
+
+### 1.1 项目背景
+
+本项目面向钢琴学习者与爱好者的两大痛点：**"扒谱难"** 与 **"演奏中手动翻谱破坏连贯性"**。立项书中规划了音频转录、乐谱阅读、节拍器、自动翻页等完整能力。
+
+### 1.2 Demo 目标与范围
+
+**目标**：交付一个可现场演示的 Web 应用，跑通 **"上传音频 → 转录出乐谱 → 可视化渲染 → 跟播播放 + 节拍器"** 的完整主流程，验证核心产品链路。
+
+**一期范围（本期交付）**：
+
+- 音频文件上传；
+- 音轨转录（复用 Basic Pitch）生成乐谱数据；
+- 乐谱渲染与加载（alphaTab）；
+- 乐谱跟播播放（alphaTab 内置播放器 + 动态光标）；
+- 节拍器（40–208 BPM，可调节拍细分与强拍提醒）。
+
+**二期（后续迭代，本期只作预留）**：A/B 循环练习、变速播放、无接触翻页（眨眼 / 头部姿态）、可视化乐谱编辑、用户体系与乐谱管理等。
+
+---
+
+## 2. 需求概述
+
+### 2.1 功能需求
+
+| 编号 | 功能 | 描述 | 优先级 |
+|---|---|---|---|
+| F1 | 音频上传 | 用户选择本地上传音频文件（wav/mp3/m4a 等常见格式） | 高 |
+| F2 | 音轨转录 | 后端对上传音频执行转录，生成可渲染的乐谱数据 | 高 |
+| F3 | 乐谱渲染 | 将转录结果渲染为五线谱，支持缩放与横向滚动 | 高 |
+| F4 | 跟播播放 | 播放乐谱，光标随音高滚动定位当前音符，支持播放/暂停/停止/进度跳转 | 高 |
+| F5 | 节拍器 | 独立设定 BPM（40–208）、节拍细分（如 1/4、1/8、三连音）、强拍提醒开关 | 高 |
+| F6 | 响应式布局 | 桌面与平板浏览器均可用，触控翻谱/缩放可用 | 中 |
+
+### 2.2 非功能需求
+
+| 类别 | 要求 |
+|---|---|
+| 性能 | 单条音频转录在普通开发机 CPU 上 10 秒内完成返回（Basic Pitch 支持 CPU 推理） |
+| 稳定性 | 演示高优先：失败时给清晰中文提示，不产生不可恢复的卡死 |
+| 可维护性 | 前端组件化、后端功能分层，转录供应商集中封装、便于换实现 |
+| 兼容性 | 现代浏览器（Chrome / Edge / Safari），自动降级为 alphaTab 音源播放 |
+
+---
+
+## 3. 总体架构
+
+### 3.1 系统架构图
+
+```mermaid
+flowchart LR
+    subgraph 前端Vue3
+        A[上传组件] --> B[转录结果]
+        B --> C[alphaTab 乐谱渲染]
+        C --> D[alphaTab 播放器/光标]
+        E[WebAudio 节拍器]
+    end
+
+    subgraph 后端FastAPI
+        F[/api/transcribe 转录接口/]
+        H[piano_transcription_inference<br/>AI 模型]
+        I[midi_to_alphatex.py<br/>格式转换]
+    end
+
+    A -->|POST 音频 + FormData| F
+    F --> H
+    H --> MIDI[(音符事件列表<br/>onset/offset/midi_note/velocity)]
+    MIDI --> I
+    I --> ATX[("AlphaTex 文本")]
+    ATX --> B
+    D -->|播放驱动| C
+```
+
+### 3.2 形态说明
+
+- **前后端分离**：Vue 3 前端为 SPA，FastAPI 后端提供 REST 接口并托管前端构建产物（便于单服务器演示 / 部署）。
+- **转录为异步任务**：上传后返回任务 ID，前端轮询进度，避免长请求阻塞；利于二期接入队列与真实模型。
+
+---
+
+## 4. 技术选型与选型理由
+
+> 核心原则（对应你的要求）：**复杂接口一律先复用现成的，后续再在具体处优化**。
+
+| 环节 | 选型 | 为什么 |
+|---|---|---|
+| 前端框架 | Vue 3 + Vite | 组件化利于响应式与后续模块扩展；Vite 启动快、热更新友好 |
+| 乐谱渲染/播放 | **alphaTab** | 跨平台、内置 alphaSynth 音源播放器与光标跟播，天然满足 F3/F4；**直接用 AlphaTex 文本驱动**，比二进制 MIDI / MusicXML 更灵活 |
+| 后端框架 | Python FastAPI | 与转录生态同语言；异步、类型友好、文档自动生成 |
+| 音频解码 | **ffmpeg（Windows 静态 exe，解压到 backend/）** | librosa 在 piano_env 里需要 ffmpeg 作 mp3 解码后端；Windows 上直接下载静态 exe 免安装，1 行 PATH 即生效 |
+| 转录算法 | **piano_transcription_inference** | 已在 piano_env 装好（torch 1.4.0 + mido + librosa）；阶段 0 冒烟验证：CPU 模式对真实钢琴音频（14.6s）识别出 **85 音符 + 7 踏板事件**，onset/offset 精度 ±0.05s |
+| 格式转换 | **自研 midi_to_alphatex.py** | 模型输出的音符事件列表（onset/offset/midi_note/velocity）→ 按 BPM 和拍号硬切小节 → 换算时值 → 映射成 AlphaTex 文本。**人类可读、方便前端 debug 和后续乐谱编辑** |
+| 节拍器 | Web Audio API + 自研精简逻辑 | 无重依赖，BPM/细分/强拍完全可控 |
+| 响应式 | CSS 媒体查询 + 自定义布局 | 零重依赖，按组件级适配 |
+
+> **为什么走"音频 → 音符事件列表 → AlphaTex"这条链路，而不是直接 MIDI / MusicXML？**
+> 1. **AlphaTex 是人类可读文本**：在浏览器 devtools 里能直接看到生成了什么，方便 debug 和后续做乐谱编辑（改某个音符、加小节）；
+> 2. **alphaTab 直接支持 AlphaTex**：我们前端早就用 AlphaTex 在渲染（ScoreViewer 组件里 loadAlphaTex），没有额外的格式转换开销；
+> 3. **MIDI 在这里只是中间格式**：我们用 `mido` 把模型返回的 note_on/note_off 事件解析出来，再自己翻译成 AlphaTex——这个转换器逻辑是我们自己控制的，二期换模型也只改"音符事件列表"这层，下游不动。
+> 4. 原设计文档写的 Basic Pitch + music21 + MusicXML 是立项初期的假设，后来实际落地时发现 `piano_transcription_inference` 能直接在你的 piano_env 里跑起来、精度足够 demo，因此**改用这条更轻量的链路**。
+
+---
+
+## 5. 核心流程设计
+
+### 5.1 上传 → 转录 → 渲染
+
+1. 用户在前端选择音频文件（mp3 / wav / m4a / flac / ogg / aac / webm），或拖放到 hero 区域；
+2. 前端 `POST /api/transcribe`，FormData 直接携带文件（一期同步，不做异步任务）；
+3. 后端执行：**ffmpeg/librosa 解码 → piano_transcription_inference 推理 → midi_to_alphatex.py 转文本**；
+4. 后端返回 JSON：`{ title, alphatex, duration }`；
+5. 前端把 `alphatex` 交给 alphaTab（`ScoreViewer`）即时渲染五线谱；
+6. 用户点播放 → alphaTab 内置播放器（alphaSynth + SoundFont2 音源）以 Web Audio 出声并驱动光标滚动；支持倍速 / 循环 / 进度跳转。
+
+```
+音频文件 → librosa+ffmpeg(解码) → piano_transcription_inference(AI 模型)
+    → 音符事件列表 [{onset, offset, midi_note, velocity}]
+    → midi_to_alphatex.py(格式转换)
+    → AlphaTex 文本 → alphaTab 渲染 → 跟播/光标
+```
+
+### 5.2 跟播播放
+
+- 播放由 alphaTab `MidiPlayer` 驱动：进度条、播放/暂停/停止由前端组件控制；
+- 光标按音符时间轴实时移动，实现"音画同步"；
+- 二期预留"随原始音频同步"的抽象接口（本期未实现）。
+
+### 5.3 节拍器
+
+- 独立 WebAudio 节拍器：每拍（或细分拍）触发一次合成音符（首个/次拍用"叮"，其余用"嗒"）；
+- 控件：BPM 滑杆 / 加减小控件、拍号（如 4/4、3/4、6/8）、细分选择、强拍提醒开关；
+- 一期为**独立运行**模式；与跟播联动的"小节首强拍绑定"作为二期增强。
+
+---
+
+## 6. 模块详细设计
+
+### 6.1 前端模块（Vue 3）
+
+| 组件 | 职责 | 关键依赖 |
+|---|---|---|
+| `ScoreUploader.vue` | 选择并上传音频，显示上传/转录进度 | `@api/upload`、`@api/transcribe` |
+| `ScoreViewer.vue` | 封装 alphaTab，加载 MusicXML、渲染五线谱、缩放滚动 | `@coderline/alphatab` |
+| `PlayerBar.vue` | 播放/暂停/停止/进度跳转，驱动光标 | alphaTab `MidiPlayer` |
+| `Metronome.vue` | 节拍器控制面板与闹铃合成 | Web Audio API |
+| `App.vue` | 整体响应式布局与状态管理 | — |
+
+- 状态：引入轻量 `Pinia` 管理 `task` / `score` / `player` 状态；
+- 转录服务封装于 `src/api/transcribe.js`，集中统一接口，便于二期替换实现。
+
+### 6.2 后端模块（FastAPI）
+
+| 模块 | 路径 | 职责 |
+|---|---|---|
+| FastAPI 入口 | `backend/main.py` | 路由 `/api/transcribe` + `/api/output/{name}` + CORS + 静态托管 |
+| 转录封装 | `backend/transcriber.py` | 解码（librosa+ffmpeg）→ PianoTranscription 推理 → 输出音符事件列表 |
+| 格式转换 | `backend/midi_to_alphatex.py` | 音符事件列表 → 推断 BPM → 按小节切分 → 换算时值 → 生成 AlphaTex 文本 |
+| 音频预处理 | — | ffmpeg.exe / ffprobe.exe 解压在 `backend/` 根目录，进程启动时加 PATH |
+| 产物 | `backend/output/` | 转录产物 `.mid` 文件，可选供前端下载备份 |
+
+> 一期后端扁平结构（不搞 `app/routers/services/` 三层嵌套），demo 体量够了，读起来一目了然。
+
+### 6.3 转录供应商封装（关键抽象点）
+
+```python
+# backend/transcriber.py  —— 一期实现：piano_transcription_inference
+class BaseTranscriber(ABC):
+    @abstractmethod
+    def transcribe(self, audio_path: str) -> list[dict]:
+        """返回音符事件列表 [{'onset': float, 'offset': float, 'midi_note': int, 'velocity': int}]"""
+
+class PianoTranscriber(BaseTranscriber):
+    def __init__(self, checkpoint_path=None, device='cpu'):
+        self.model = PianoTranscription(checkpoint_path=checkpoint_path, device=device)
+
+    def transcribe(self, audio_path: str) -> list[dict]:
+        audio, sr = librosa.load(audio_path, sr=16000, mono=True)
+        audio = audio.astype(np.float32)
+        result = self.model.transcribe(audio, midi_path=None)  # 不走写文件，直接拿 dict
+        return result['est_note_events']
+
+# 二期：换更先进模型（如 basic-pitch + pedal 检测），仅需实现 BaseTranscriber 的 transcribe()
+# 下游 midi_to_alphatex.py 和前端完全不动
+```
+
+这样二期换模型时，**只改一个类**，格式转换器和前端零改动。
+
+---
+
+## 7. 接口设计（REST）
+
+| 方法 | 路径 | 说明 | 请求 / 响应 |
+|---|---|---|---|
+| POST | `/api/transcribe` | 上传 + 转录（一期同步） | 请求 multipart `audio` 文件；响应 `{ title, alphatex, duration, midi_url }` |
+| GET | `/api/output/{name}` | 下载转录产物 `.mid` | 二进制文件，供前端下载备份 |
+
+> 一期接口极简，没有异步任务管理、没有轮询。如果后端运行时间过长（>60s），二期再加异步。
+
+---
+
+## 8. 响应式与 UI 设计考虑
+
+- **栅格 / 断点**：桌面（≥1024px）乐谱全宽 + 右侧控制栏；平板（<1024px）控制栏折叠为底部工具条，触控优先；
+- **乐谱区**：虚拟横向滚动，触控双指缩放（alphaTab 缩放接口），保证演奏跟随体验；
+- **控制交互**：上传、播放、节拍器均提供触屏友好的大按钮；
+- 为不同设备演示顺畅，默认加载一首**预置示例乐谱**（内置 MusicXML），演示时不依赖转录也能展示渲染与跟播。
+
+---
+
+## 9. 关键技术与风险
+
+| 风险 / 关键点 | 说明与规避 |
+|---|---|
+| alphaTab 不渲染 MIDI | 已设计 music21 中转步骤，链路闭环 |
+| Basic Pitch 转录精度有限 | 属"先复现成"策略可接受；二期可换模型且封装点允许平滑替换 |
+| 长音频转录耗时 | 转录设异步任务 + 进度反馈；演示使用 ≤30 秒音频段 |
+| 浏览器音源播放兼容性 | 依赖更旧的 SoundFont 合成逻辑在不同浏览器音色有差异，仅作演示用，可接受 |
+| 临时存储 | 一期用服务器临时目录 + 定时清理，不入库 |
+
+---
+
+## 10. 项目目录结构（实际落地）
+
+```
+大创/
+├─ frontend/                     # Vue 3 + Vite 前端（已搭好）
+│  ├─ src/
+│  │  ├─ components/             # ScoreViewer / PlayerBar 等（已存在）
+│  │  ├─ services/
+│  │  │  └─ transcribe.js        # 前端转谱服务（一期是模拟态，待接后端）
+│  │  ├─ samples/
+│  │  │  └─ sampleSheet.js       # 预置示例乐谱（梦中的婚礼片段）
+│  │  └─ views/HomeView.vue
+│  └─ package.json
+├─ backend/                      # FastAPI 后端（阶段 0 已跑通）
+│  ├─ main.py                    # FastAPI 入口（待写）
+│  ├─ transcriber.py             # 转录封装（待写）
+│  ├─ midi_to_alphatex.py        # MIDI→AlphaTex 转换器（待写，阶段 1）
+│  ├─ ffmpeg.exe / ffprobe.exe   # 音频解码（已解压）
+│  ├─ output/
+│  │  └─ real_piano.mid          # 14.6s 真实音频转录产物（demo）
+│  ├─ weights/                   # 空，预备模型 checkpoint 拷贝
+│  └─ samples/                   # 空，预备样本
+├─ 音源素材/                     # 你的测试音频
+│  └─ ethereal-piano-dreams_36526.mp3
+├─ backend/                      后端 FastAPI 服务
+├─ 立项书.doc / 调查.md / 软件设计.md
+└─ piano_transcription_inference_data/   # checkpoint 权重（C:\Users\limin\ 下，171MB）
+```
+
+---
+
+## 11. 环境与工具
+
+- **后端环境**：`C:\Users\limin\anaconda3\envs\piano_env`（已装好 torch 1.4.0 + piano_transcription_inference 0.0.6 + mido + librosa）
+- **ffmpeg**：静态 exe 解压在 `backend/ffmpeg.exe` + `backend/ffprobe.exe`，进程启动时 `os.environ['PATH'] += ...` 加入
+- **Checkpoint**：`C:\Users\limin\piano_transcription_inference_data\note_F1=0.9677_pedal_F1=0.9186.pth`（171MB，已拉取）
+- **后端依赖**：FastAPI、uvicorn、python-multipart、pydantic（需 pip 装到 piano_env）
+- **前端**：Node 18+，npm，Vite dev server（代理 `/api` 到后端）
+- **启动**：
+  ```bash
+  # 前端
+  cd frontend && npm run dev
+  # 后端
+  C:\Users\limin\anaconda3\envs\piano_env\python.exe -m uvicorn main:app --reload --port 8000
+  ```
+
+---
+
+## 12. 一期执行顺序规划（开发节奏）
+
+> 原则：**后端只做最小组件、先让前端有数据可消费 → 前端纵向打通"渲染→播放→节拍器" → 最后把转录接上做端到端**。
+
+### 进度表（以实际落地为准）
+
+| 阶段 | 内容 | 验收标准 | 状态 |
+|---|---|---|---|
+| **阶段 0 模型冒烟** | 合成音频 + 真实钢琴音频各跑一遍 piano_transcription_inference | 模型加载成功、吐 MIDI、真实音频识别出 85 音符 + 7 踏板 | ✅ **已完成** |
+| **阶段 1 MIDI→AlphaTex** | 写 `backend/midi_to_alphatex.py`：音符事件列表→AlphaTex | real_piano.mid 转成 AlphaTex 贴进前端能渲染 | ⏳ 待做 |
+| **阶段 2 FastAPI 壳** | 写 `backend/main.py` + `backend/transcriber.py`，接口 `/api/transcribe` | Postman 拿 JSON，alphatex 字段贴前端能渲染 | ⏳ 待做 |
+| **阶段 3 前端接入** | 改 `frontend/src/services/transcribe.js` 从 fetch 后端拿 alphatex | 上传真实钢琴音频 → 进度条走完 → 乐谱舞台显示转录结果 → 点播放出声 | ⏳ 待做 |
+| **前端 P0-P4** | Vue3+Vite 骨架 / 布局 / ScoreViewer / PlayerBar | 部署 / 交互跑通 | ✅ **已完成** |
+| **前端 P5 节拍器** | Web Audio 做节拍器 | 40-208 BPM 出节奏声 | ⏳ 待做 |
+| **前端 P7 演示打磨** | 后端连接状态、错误提示、MIDI 下载链接、UI 细节 | 现场演示顺畅、报错清晰中文 | ⏳ 待做 |
+
+### 本期前端已完成的能力
+
+- **ScoreViewer**：封装 alphaTab，Page 布局 + 缩放 + 自动换行 + 香槟金光标 + 真实示例乐谱渲染（梦中的婚礼片段）
+- **PlayerBar**：播放/暂停/循环/倍速（0.5–2x 6 档胶囊按钮）/ 进度跳转；计时与倍速、光标天然同步
+- **上传 & 转谱交互**：拖拽 + 文件选择 + 进度条（目前是**前端模拟态**，待阶段 3 接真后端）
+- **暖木·米白主题**：松绿主色 + 米白背景 + 暖木边框 + 香槟金高亮
+- **响应式**：桌面 / 平板断点正常
+
+### 还需写的后端文件清单
+
+| 文件 | 阶段 | 备注 |
+|---|---|---|
+| `backend/midi_to_alphatex.py` | 阶段 1 | 转换器核心，内部 BPM 推断 + 小节切分 + 时值换算 |
+| `backend/transcriber.py` | 阶段 2 | 解码 + PianoTranscription 封装（BaseTranscriber 抽象） |
+| `backend/main.py` | 阶段 2 | FastAPI + CORS + `/api/transcribe` + `/api/output/{name}` |
+| `backend/requirements.txt` | 阶段 2 | 只列 fastapi/uvicorn/python-multipart/pydantic（其余用 piano_env 现成的） |
+
+### 还需前端打磨
+
+| 项 | 优先级 | 备注 |
+|---|---|---|
+| Pinia 状态管理 | 中 | 目前 transcribe.js 是单文件，状态散在 HomeView，demo 量可暂不拆 |
+| 后端连接健康检查 | 中 | 顶栏显示 🟢/🔴 |
+| 节拍器 | 高 | 前端静态 UI 已有，缺 Web Audio 发声逻辑 |
+| 错误提示友好化 | 中 | 后端挂了时前端显示"后端未启动"而不是白屏 |
+
+---
+
+## 13. 二期迭代展望（本期仅预案）
+
+1. **无接触翻页**：基于摄像头 + 现成人脸关键点检测（如 MediaPipe / tensorflow.js），识别双眨眼或头部姿态翻页；
+2. **A/B 循环与变速**：基于 alphaTab 播放器区间循环 + 变速播放实现；
+3. **可视化乐谱编辑**：在渲染结果上做音符级布尔交互（初期可复用 alphaTab 编辑能力或单独渲染层）；
+4. **转录升级**：在 `BaseTranscriber` 封装点接入更高精度模型、踏板检测与多轨支持；
+5. **用户与乐谱管理**：引入数据库与账号体系（对接立项书 Java/MySQL 中长期规划）。

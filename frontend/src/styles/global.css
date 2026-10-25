@@ -1,0 +1,46 @@
+:root {
+  /* 暖木 · 米白 设计变量 */
+  --cream-0: #fbf8f1;          /* 页面底色 */
+  --cream-1: #f4eee0;          /* 次级面板 */
+  --paper: #ffffff;            /* 卡片/纸面 */
+  --wood-50: #f0e7d4;
+  --wood-200: #dcccb0;
+  --wood-400: #b89a6e;         /* 暖木主线 */
+  --wood-600: #8a6b43;
+  --pine-600: #5e7a5a;         /* 主色·松绿 */
+  --pine-700: #4f6a4b;
+  --pine-800: #3a4f39;
+  --ink: #2b2721;              /* 暖黑文字 */
+  --ink-soft: #5b5345;
+  --ink-faint: #8a8271;
+  --line: #e8dfcb;
+  --gold: #c8a45c;             /* 点缀·香槟金 */
+  --shadow-soft: 0 10px 30px -12px rgba(80, 66, 42, 0.25);
+  --shadow-lift: 0 18px 44px -16px rgba(80, 66, 42, 0.35);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --topbar-h: 64px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--cream-0);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
