@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "node --experimental-strip-types --test",
+    "test:browser": "node tests/browser-regression.mjs",
+    "test:correction": "node tests/correction-browser.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -17,7 +21,11 @@
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
+    "@types/node": "^26.6.5",
     "@vitejs/plugin-vue": "^6.0.8",
-    "vite": "^8.3.0"
+    "playwright": "^1.64.1",
+    "typescript": "^5.8.3",
+    "vite": "^8.3.0",
+    "vue-tsc": "^3.3.13"
   }
 }

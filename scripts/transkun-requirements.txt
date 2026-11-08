@@ -1,0 +1,2 @@
+transkun==2.0.1
+setuptools==80.10.2

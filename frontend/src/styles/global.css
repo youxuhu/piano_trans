@@ -1,22 +1,21 @@
 :root {
-  /* 暖木 · 米白 设计变量 */
-  --cream-0: #fbf8f1;          /* 页面底色 */
-  --cream-1: #f4eee0;          /* 次级面板 */
-  --paper: #ffffff;            /* 卡片/纸面 */
-  --wood-50: #f0e7d4;
-  --wood-200: #dcccb0;
-  --wood-400: #b89a6e;         /* 暖木主线 */
-  --wood-600: #8a6b43;
-  --pine-600: #5e7a5a;         /* 主色·松绿 */
-  --pine-700: #4f6a4b;
-  --pine-800: #3a4f39;
-  --ink: #2b2721;              /* 暖黑文字 */
-  --ink-soft: #5b5345;
-  --ink-faint: #8a8271;
-  --line: #e8dfcb;
-  --gold: #c8a45c;             /* 点缀·香槟金 */
-  --shadow-soft: 0 10px 30px -12px rgba(80, 66, 42, 0.25);
-  --shadow-lift: 0 18px 44px -16px rgba(80, 66, 42, 0.35);
+  --cream-0: #f3f6f8;
+  --cream-1: #edf3f5;
+  --paper: #ffffff;
+  --wood-50: #edf3f4;
+  --wood-200: #d7e3e6;
+  --wood-400: #89a9b1;
+  --wood-600: #52717c;
+  --pine-600: #2e8a7a;
+  --pine-700: #267465;
+  --pine-800: #1f5b53;
+  --ink: #243747;
+  --ink-soft: #435c68;
+  --ink-faint: #83959e;
+  --line: #e1e9ed;
+  --gold: #58a696;
+  --shadow-soft: 0 10px 30px -12px rgba(43, 76, 88, 0.14);
+  --shadow-lift: 0 18px 44px -16px rgba(43, 76, 88, 0.2);
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;

@@ -1,0 +1,32 @@
+{
+  "bytedance": {
+    "model": "bytedance",
+    "device": "cuda",
+    "sample_rate": 22050,
+    "duration_seconds": 10.0,
+    "load_seconds": 2.813599179999983,
+    "inference_seconds": 0.865721904000111,
+    "cold_start_seconds": 3.679321084000094,
+    "peak_gpu_memory_bytes": 356644352,
+    "peak_gpu_memory_note": null,
+    "cold_start_scope": "load() plus full transcribe() call",
+    "note_count": 19,
+    "pedal_count": 4,
+    "source": "音源素材/小星星_爱给网_aigei_com.mp3, first 10 seconds"
+  },
+  "transkun": {
+    "model": "transkun",
+    "device": "cuda",
+    "sample_rate": 22050,
+    "duration_seconds": 10.0,
+    "load_seconds": 7.040000582492212e-07,
+    "inference_seconds": 11.321527497000034,
+    "cold_start_seconds": 11.321528201000092,
+    "peak_gpu_memory_bytes": null,
+    "peak_gpu_memory_note": "unavailable: model runs in a child process; parent CUDA counters do not include it",
+    "cold_start_scope": "load() plus full transcribe() call; Transkun transcribe() includes child startup, model loading, and inference",
+    "note_count": 18,
+    "pedal_count": 3,
+    "source": "音源素材/小星星_爱给网_aigei_com.mp3, first 10 seconds"
+  }
+}

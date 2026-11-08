@@ -1,0 +1,147 @@
+{
+  "scope": "synthetic controlled signals; not real piano accuracy",
+  "model": "bytedance",
+  "load_seconds": 3.7624136720000934,
+  "cases": {
+    "melody": {
+      "reference_notes": 8,
+      "notation": {
+        "reference_note_count": 8,
+        "predicted_note_count": 8,
+        "onset_f1": 1.0,
+        "onset_offset_f1": 1.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "recognition": {
+        "reference_note_count": 8,
+        "predicted_note_count": 13,
+        "onset_f1": 0.761904761904762,
+        "onset_offset_f1": 0.761904761904762,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "inference_seconds": 0.8955704209997748
+    },
+    "chords_two_hands": {
+      "reference_notes": 12,
+      "notation": {
+        "reference_note_count": 12,
+        "predicted_note_count": 12,
+        "onset_f1": 1.0,
+        "onset_offset_f1": 1.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "recognition": {
+        "reference_note_count": 12,
+        "predicted_note_count": 11,
+        "onset_f1": 0.6956521739130435,
+        "onset_offset_f1": 0.34782608695652173,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "inference_seconds": 0.43282462200022565
+    },
+    "repeats_pedal": {
+      "reference_notes": 6,
+      "notation": {
+        "reference_note_count": 6,
+        "predicted_note_count": 6,
+        "onset_f1": 1.0,
+        "onset_offset_f1": 1.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 1,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 0.0,
+        "pedal_onset_offset_f1": 0.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "recognition": {
+        "reference_note_count": 6,
+        "predicted_note_count": 8,
+        "onset_f1": 0.7142857142857143,
+        "onset_offset_f1": 0.14285714285714288,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 1,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 0.0,
+        "pedal_onset_offset_f1": 0.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "inference_seconds": 0.4303161360003287
+    },
+    "bar_ties": {
+      "reference_notes": 3,
+      "notation": {
+        "reference_note_count": 3,
+        "predicted_note_count": 3,
+        "onset_f1": 1.0,
+        "onset_offset_f1": 1.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "recognition": {
+        "reference_note_count": 3,
+        "predicted_note_count": 2,
+        "onset_f1": 0.8,
+        "onset_offset_f1": 0.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "inference_seconds": 0.43950823000022865
+    },
+    "silence": {
+      "reference_notes": 0,
+      "notation": {
+        "reference_note_count": 0,
+        "predicted_note_count": 0,
+        "onset_f1": 1.0,
+        "onset_offset_f1": 1.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "recognition": {
+        "reference_note_count": 0,
+        "predicted_note_count": 0,
+        "onset_f1": 1.0,
+        "onset_offset_f1": 1.0,
+        "offset_tolerance_seconds": 0.05,
+        "reference_pedal_count": 0,
+        "predicted_pedal_count": 0,
+        "pedal_onset_f1": 1.0,
+        "pedal_onset_offset_f1": 1.0,
+        "pedal_convention": "CC64 down >=64 to up <64; note offsets are not extended by pedal"
+      },
+      "inference_seconds": 0.4099397019999742
+    }
+  }
+}
