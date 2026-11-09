@@ -8,3 +8,6 @@ backend/data/
 backend/weights/
 backend/output/
 *.exe
+
+.DS_Store
+~$*.docx
